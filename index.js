@@ -3,9 +3,10 @@ const router = require("./routes");
 
 const app = express();
 
-const { PORT } = process.env;
-console.log(process.env.PORT);
-// app.use("/", router);
+const PORT = process.env.PORT || 8000;
+
+app.use("/", router);
+
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });
