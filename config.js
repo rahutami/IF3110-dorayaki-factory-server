@@ -12,6 +12,11 @@ const config = {
   jwt: {
     secret: process.env.SECRET,
   },
+  mail: {
+    username: process.env.MAIL_USERNAME,
+    password: process.env.MAIL_PASSWORD,
+    host: process.env.MAIL_HOST,
+  },
 };
 
 module.exports = config;
