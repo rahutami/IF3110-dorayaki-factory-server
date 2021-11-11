@@ -22,10 +22,10 @@ const Resep = sequelize.define('Resep', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  id_bahanbaku: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
+  // id_bahanbaku: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  // },
   jumlah: {
     type: DataTypes.INTEGER,
     allowNull: false
@@ -36,7 +36,8 @@ const Resep = sequelize.define('Resep', {
     tableName: 'resep'
 });
 
-Resep.belongsTo(BahanBaku); // belom yakin beneran ditambahin disini apa engga
+Resep.belongsTo(BahanBaku,{foreignKey: "id_bahanbaku"});
+// Resep.belongsTo(BahanBaku); // belom yakin beneran ditambahin disini apa engga
 // `sequelize.define` also returns the model
 console.log(Resep === sequelize.models.Resep); // true
 // console.log(Resep.findAll());
