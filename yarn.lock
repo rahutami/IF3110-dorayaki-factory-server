@@ -411,6 +411,13 @@
     "statuses" "~1.5.0"
     "unpipe" "~1.0.0"
 
+"find-config@^1.0.0":
+  "integrity" "sha1-6vorm8B/qckOmgw++c7PHMgA9TA="
+  "resolved" "https://registry.npmjs.org/find-config/-/find-config-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "user-home" "^2.0.0"
+
 "forwarded@0.2.0":
   "integrity" "sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow=="
   "resolved" "https://registry.npmjs.org/forwarded/-/forwarded-0.2.0.tgz"
@@ -862,6 +869,11 @@
   dependencies:
     "wrappy" "1"
 
+"os-homedir@^1.0.0":
+  "integrity" "sha1-/7xJiDNuDoM94MFox+8VISGqf7M="
+  "resolved" "https://registry.npmjs.org/os-homedir/-/os-homedir-1.0.2.tgz"
+  "version" "1.0.2"
+
 "p-cancelable@^1.0.0":
   "integrity" "sha512-s73XxOZ4zpt1edZYZzvhqFa6uvQc1vwUa0K0BdtIZgQMAJj9IbebH+JkgKZc9h+B05PKHLOTl4ajG1BmNrVZlw=="
   "resolved" "https://registry.npmjs.org/p-cancelable/-/p-cancelable-1.1.0.tgz"
@@ -1244,6 +1256,13 @@
   "version" "3.0.0"
   dependencies:
     "prepend-http" "^2.0.0"
+
+"user-home@^2.0.0":
+  "integrity" "sha1-nHC/2Babwdy/SGBODwS4tJzenp8="
+  "resolved" "https://registry.npmjs.org/user-home/-/user-home-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "os-homedir" "^1.0.0"
 
 "utils-merge@1.0.1":
   "integrity" "sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM="

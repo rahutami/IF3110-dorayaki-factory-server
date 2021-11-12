@@ -1,4 +1,5 @@
-require("dotenv").config();
+// require("dotenv").config();
+require('dotenv').config({ path: require('find-config')('.env') })
 
 const config = {
   port: process.env.PORT,
