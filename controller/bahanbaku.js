@@ -1,47 +1,77 @@
 const express = require("express");
-const { v4: uuidv4 } = require("uuid"); //probably wont be needed, nanti pake auto increment aja
-
 const router = express.Router();
 
-const bahanBaku = [
-  { id: 1, name: "telur", amount: 5 },
-  { id: 2, name: "terigu", amount: 10 },
-  { id: 3, name: "gula", amount: 10 },
-];
+const BahanBaku = require("../models/BahanBaku");
 
 // get all item
 router.route("/").get(async (req, res) => {
+  const bahanBaku = await BahanBaku.findAll();
+
   res.status(200).json(bahanBaku);
 });
 
 // get one item
 router.route("/:id").get(async (req, res) => {
   const { id } = req.params;
-  const selectedBahanBaku = bahanBaku.filter((item) => item.id == id);
+  const selectedBahanBaku = await BahanBaku.findOne({ where: { id } });
 
-  if (selectedBahanBaku.length === 0)
-    res.status(404).json("Bahan Baku not available");
-  else res.status(200).json(selectedBahanBaku[0]);
+  if (selectedBahanBaku)
+    res.status(200).json({ success: true, ...selectedBahanBaku.dataValues });
+  else
+    res.status(404).json({ success: false, msg: "Bahan Baku not available" });
 });
 
 // create new item
 router.route("/").post(async (req, res) => {
-  const { name, amount } = req.body;
+  const { nama_bahanbaku, stok, satuan } = req.body;
 
-  if (name && amount) {
-    const newItem = { id: uuidv4(), name, amount }; //id will probably not needed, pake auto increment
-    bahanBaku.push(newItem);
-    res.status(200).json({ success: true, ...newItem });
+  const currDate = new Date(Date.now());
+  const timestamp = `${currDate.getFullYear()}-${currDate.getMonth()}-${currDate.getDate()} ${currDate.getHours()}:${currDate.getMinutes()}:${currDate.getSeconds()}`;
+  console.log(timestamp);
+  if (nama_bahanbaku && stok) {
+    const newItem = { nama_bahanbaku, stok, satuan, timestamp }; //id will probably not needed, pake auto increment
+
+    BahanBaku.create(newItem)
+      .then((result) => {
+        console.log();
+        res.status(200).json({ success: true, ...result.dataValues });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ succes: false, msg: "Internal server error" });
+      });
   } else {
-    res.status(400).json("body galengkap");
+    res
+      .status(400)
+      .json({ succes: false, msg: "Please insert name and amount" });
   }
 });
 
 // update item
 router.route("/:id").put(async (req, res) => {
   const { id } = req.params;
-  const { name, amount } = req.body;
+  const { nama_bahanbaku, stok } = req.body;
 
+  const updateValue = {};
+  if (nama_bahanbaku) updateValue["nama_bahanbaku"] = nama_bahanbaku;
+  if (stok) updateValue["stok"] = stok;
+
+  BahanBaku.update(updateValue, { where: { id } })
+    .then(async (result) => {
+      const selectedBahanBaku = await BahanBaku.findOne({ where: { id } });
+
+      if (selectedBahanBaku)
+        res
+          .status(200)
+          .json({ success: true, ...selectedBahanBaku.dataValues });
+      else
+        res
+          .status(404)
+          .json({ success: false, msg: "Bahan Baku not available" });
+    })
+    .catch((err) => {
+      res.status(500).json({ succes: false, msg: "Internal Server Error" });
+    });
   // pas udah connect database probably just use update?
 });
 

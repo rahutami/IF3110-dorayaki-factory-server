@@ -9,31 +9,38 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("./index");
 
-const BahanBaku = sequelize.define('BahanBaku', {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-
+const BahanBaku = sequelize.define(
+  "BahanBaku",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    nama_bahanbaku: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    stok: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    satuan: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    timestamp: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
   },
-  nama_bahanbaku: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  stok: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  timestamp: {
-    type: DataTypes.DATE,
-    allowNull: false
+  {
+    // Other model options go here
+    timestamps: false,
+    tableName: "bahanbaku",
   }
-}, {
-  // Other model options go here
-  timestamps: false,
-  tableName: 'bahanbaku'
-});
+);
 
 // `sequelize.define` also returns the model
 console.log(BahanBaku === sequelize.models.BahanBaku); // true
