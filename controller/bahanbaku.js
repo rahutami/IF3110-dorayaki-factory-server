@@ -13,6 +13,8 @@ router.route("/").get(async (req, res) => {
 // get one item
 router.route("/:id").get(async (req, res) => {
   const { id } = req.params;
+  const { Origin } = req.header;
+
   const selectedBahanBaku = await BahanBaku.findOne({ where: { id } });
 
   if (selectedBahanBaku)
@@ -60,14 +62,15 @@ router.route("/:id").put(async (req, res) => {
     .then(async (result) => {
       const selectedBahanBaku = await BahanBaku.findOne({ where: { id } });
 
-      if (selectedBahanBaku)
+      if (selectedBahanBaku) {
         res
           .status(200)
           .json({ success: true, ...selectedBahanBaku.dataValues });
-      else
+      } else {
         res
           .status(404)
           .json({ success: false, msg: "Bahan Baku not available" });
+      }
     })
     .catch((err) => {
       res.status(500).json({ succes: false, msg: "Internal Server Error" });
