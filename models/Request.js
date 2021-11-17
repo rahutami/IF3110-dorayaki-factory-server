@@ -25,6 +25,10 @@ const Request = sequelize.define('Request', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
+  status: {
+    type: DataTypes.STRING(20),
+    allowNull: false
+  }
 }, {
   // Other model options go here
   timestamps: false,

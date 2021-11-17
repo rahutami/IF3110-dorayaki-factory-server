@@ -31,6 +31,7 @@ CREATE TABLE `bahanbaku` (
   `id` int(11) NOT NULL,
   `nama_bahanbaku` varchar(255) NOT NULL,
   `stok` int(11) NOT NULL,
+  `satuan` varchar(255) NOT NULL,
   `timestamp` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -56,7 +57,8 @@ CREATE TABLE `log_request` (
 CREATE TABLE `request` (
   `id` int(11) NOT NULL,
   `id_dorayaki` int(11) NOT NULL,
-  `jumlah` int(11) NOT NULL
+  `jumlah` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
