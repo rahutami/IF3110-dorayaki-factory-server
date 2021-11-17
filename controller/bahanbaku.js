@@ -55,8 +55,9 @@ router.route("/:id").put(async (req, res) => {
   const { nama_bahanbaku, stok } = req.body;
 
   const updateValue = {};
-  if (nama_bahanbaku) updateValue["nama_bahanbaku"] = nama_bahanbaku;
-  if (stok) updateValue["stok"] = stok;
+  if (nama_bahanbaku && nama_bahanbaku !== "")
+    updateValue["nama_bahanbaku"] = nama_bahanbaku;
+  if (stok && stok !== "") updateValue["stok"] = stok;
 
   BahanBaku.update(updateValue, { where: { id } })
     .then(async (result) => {
