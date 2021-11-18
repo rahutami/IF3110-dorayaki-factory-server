@@ -1,10 +1,11 @@
-// CREATE TABLE IF NOT EXISTS bahanbaku (
-//   id INT NOT NULL AUTO_INCREMENT,
-//   nama_bahanbaku VARCHAR(255) NOT NULL,
-// stok INTEGER NOT NULL,
-// timestamp DATETIME NOT NULL,
-// PRIMARY KEY (id)
-//   );
+// CREATE TABLE `bahanbaku` (
+//   `id` int NOT NULL AUTO_INCREMENT,
+//   `nama_bahanbaku` varchar(255) NOT NULL,
+//   `satuan` varchar(255) NOT NULL,
+//   `stok` int NOT NULL,
+//   `timestamp` datetime NOT NULL,
+//   PRIMARY KEY (`id`)
+// ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 const { DataTypes } = require("sequelize");
 const sequelize = require("./index");

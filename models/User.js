@@ -1,10 +1,11 @@
-// CREATE TABLE IF NOT EXISTS user (
-//   id INT NOT NULL AUTO_INCREMENT,
-//   username VARCHAR(50) NOT NULL,
-//   password VARCHAR(255) NOT NULL,
-//   email VARCHAR(75) NOT NULL,
-// PRIMARY KEY (id)
-//   );
+// CREATE TABLE `user` (
+//   `id` int NOT NULL AUTO_INCREMENT,
+//   `username` varchar(50) NOT NULL,
+//   `password` varchar(255) NOT NULL,
+//   `email` varchar(75) NOT NULL,
+//   PRIMARY KEY (`id`)
+// ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 const { DataTypes } = require("sequelize");
 const sequelize = require("./index");
@@ -29,7 +30,6 @@ const User = sequelize.define('User', {
     allowNull: false
   },
 }, {
-  // Other model options go here
   // Other model options go here
   timestamps: false,
   tableName: 'user'
