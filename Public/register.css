@@ -1,0 +1,87 @@
+body{
+    background: black;
+    margin: 15px;
+    margin-top: 50px;
+}
+
+.register-form,
+.register-form * {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.register-form{
+    max-width: 500px;
+    margin : 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.85);
+    padding: 15px;
+    background-color: lime;
+}
+
+.register-form-pabrik-name{
+    padding: 30px;
+    background: rgba(255,255,255,0.45);
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.register-form-content{
+    padding: 30px;
+    border-radius: 5px;
+    background: snow;
+}
+
+.register-form-header{
+    margin-bottom: 15px;
+    text-align: center;
+    color: rgba(169, 169, 169, 0.85);
+}
+
+.register-form-input{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid blue;
+    background: lime;
+    outline: none;
+    transition: border-color 0.5s;
+}
+
+.register-form-input:focus{
+    border-color: black;
+}
+
+.register-form-input::placeholder{
+    color: darkslategray;
+}
+
+.register-form-button{
+    padding: 10px;
+    color: aliceblue;
+    font-weight: bold;
+    background: black;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-form-button:active{
+    color: lime;
+}
+
+.register-form-register{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.register-form-register1{
+    font-size: 90%;
+    color: black;
+    text-decoration: none;
+}
