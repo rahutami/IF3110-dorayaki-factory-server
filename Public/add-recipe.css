@@ -1,0 +1,113 @@
+body{
+    background: black;
+    margin: 20px;
+    margin-bottom: 60px;
+    line-height: 1.6;
+}
+
+.add-recipe-wrap{
+    background: white;
+    max-width: 1080px;
+    margin : 0 auto;
+    padding: 20px;
+}
+
+.add-recipe-wrap:after{
+    content:"";
+    display: block;
+    clear: both;
+}
+
+img.add-recipe-wrap-image{
+    width: 100%;
+    height: 100%;
+}
+
+p{
+    color: black;
+    font-size: 24px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+p.add-recipe-list{
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 1px auto;
+    border-bottom: 1px solid white;
+}
+
+p.add-recipe-comment{
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 1px auto;
+}
+
+legend{
+    color: white;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+li{
+    color: white;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+textarea{
+    width: 99%;
+    height: 80px;
+    text-align: left;
+}
+.add-recipe-settings{
+    float: left;
+    background: black;
+    width: 46%;
+    height: 500px;
+    margin: 1%;
+    padding: 1%;
+}
+
+.add-recipe-settings label{
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+.add-recipe-submit{
+        padding: 10px;
+        margin: 5px;
+        color: black;
+        font-weight: bold;
+        background: white;
+        width: 98%;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        cursor: pointer;    
+}
+
+.add-recipe-submit:active{
+    color:lime;
+}
+
+.add-recipe-input{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid blue;
+    background: lime;
+    outline: none;
+    transition: border-color 0.5s;
+}
