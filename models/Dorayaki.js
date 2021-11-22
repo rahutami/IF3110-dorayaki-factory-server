@@ -6,6 +6,7 @@
 
 const { DataTypes } = require("sequelize");
 const sequelize = require("./index");
+const Resep = require("../models/Resep");
 
 const Dorayaki = sequelize.define(
   "Dorayaki",
@@ -28,6 +29,7 @@ const Dorayaki = sequelize.define(
   }
 );
 
+// Dorayaki.belongsTo(Resep, {foreignKey: "id"});
 // `sequelize.define` also returns the model
 console.log(Dorayaki === sequelize.models.Dorayaki); // true
 // console.log(BahanBaku.findAll());

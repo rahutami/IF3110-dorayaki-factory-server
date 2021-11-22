@@ -10,6 +10,9 @@
 //   CONSTRAINT `resep_ibfk_2` FOREIGN KEY (`id_bahanbaku`) REFERENCES `bahanbaku` (`id`)
 // ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
+// 1 resep punya banyak bahan baku
+
 const { DataTypes } = require("sequelize");
 const sequelize = require("./index");
 const BahanBaku = require("../models/BahanBaku");
@@ -40,9 +43,10 @@ const Resep = sequelize.define('Resep', {
     tableName: 'resep'
 });
 
-Resep.belongsTo(BahanBaku,{foreignKey: "id_bahanbaku"});
+// Resep.belongsTo(BahanBaku,{foreignKey: "id_bahanbaku"});
 Resep.belongsTo(Dorayaki,{foreignKey: "id_dorayaki"});
-
+// Resep.hasMany(BahanBaku);
+Resep.hasMany(BahanBaku,{foreignKey:"id"});
 // `sequelize.define` also returns the model
 console.log(Resep === sequelize.models.Resep); // true
 // console.log(Resep.findAll());

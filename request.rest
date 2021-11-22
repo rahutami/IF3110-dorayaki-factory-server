@@ -1,1 +1,3 @@
 GET http://localhost:8000/requests
+
+GET http://localhost:8000/requests/accept/1
