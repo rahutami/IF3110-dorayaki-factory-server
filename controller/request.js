@@ -121,8 +121,9 @@ router.route("/").post(async (req, res) => {
 
     sendMail(dorayaki["nama"], amount);
 
-    res.status(200).json("ok");
+    res.status(200).json("success");
   } catch (err) {
+    res.status(500).json("error");
     throw err;
   }
 });
