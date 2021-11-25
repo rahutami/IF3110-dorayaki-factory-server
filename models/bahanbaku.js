@@ -31,10 +31,6 @@ const BahanBaku = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    timestamp: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
   },
   {
     // Other model options go here

@@ -4,20 +4,11 @@ const nodemailer = require("nodemailer");
 const router = express.Router();
 
 const { mail } = require("../config");
+const User = require("../models/User");
 
-const admins = [
-  {
-    id: 1,
-    email: "13519192@std.stei.itb.ac.id",
-  },
-  {
-    id: 2,
-    email: "gayuhtami@gmail.com",
-  },
-];
 // send mail
 // router.route("/send").post(async
-const sendMail = async (name, amount, store) => {
+const sendMail = async (name, amount) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
@@ -36,34 +27,32 @@ const sendMail = async (name, amount, store) => {
     }
   });
 
-  const mailContents = admins.map((admin) => {
-    return {
-      from: "dorayaki-factory@gmail.com",
-      to: admin.email,
-      subject: "New Dorayaki Request",
-      text: `There's a new request from ${store}. They requested for ${amount} ${name}.`,
-    };
-  });
-
-  // const mailContent = {
-  //   from: "dorayaki-factory@gmail.com",
-  //   to: "13519192@std.stei.itb.ac.id",
-  //   subject: "Sending Email using Node.js[nodemailer]",
-  //   text: "That was easy!",
-  // };
-
-  mailContents.forEach(async (mailContent) => {
-    await transporter.sendMail(mailContent, function (error, info) {
-      if (error) {
-        console.log(error);
-        return false;
-      } else {
-        console.log("Email sent: " + info.response);
-      }
+  try {
+    const admins = await User.findAll();
+    const mailContents = admins.map((admin) => {
+      return {
+        from: "dorayaki-factory@gmail.com",
+        to: admin.email,
+        subject: "New Dorayaki Request",
+        text: `There's a new request from Dorayaki Store. They requested for ${amount} ${name} variant.`,
+      };
     });
-  });
 
-  return true;
+    mailContents.forEach(async (mailContent) => {
+      await transporter.sendMail(mailContent, function (error, info) {
+        if (error) {
+          console.log(error);
+          return false;
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
+    });
+
+    return true;
+  } catch (err) {
+    return false;
+  }
 };
 
 module.exports = { sendMail };

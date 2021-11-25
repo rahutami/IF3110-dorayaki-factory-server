@@ -1,4 +1,5 @@
 const express = require("express");
+const moment = require("moment");
 const router = express.Router();
 
 const BahanBaku = require("../models/BahanBaku");
@@ -27,11 +28,8 @@ router.route("/:id").get(async (req, res) => {
 router.route("/").post(async (req, res) => {
   const { nama_bahanbaku, stok, satuan } = req.body;
 
-  const currDate = new Date(Date.now());
-  const timestamp = `${currDate.getFullYear()}-${currDate.getMonth()}-${currDate.getDate()} ${currDate.getHours()}:${currDate.getMinutes()}:${currDate.getSeconds()}`;
-  console.log(timestamp);
   if (nama_bahanbaku && stok) {
-    const newItem = { nama_bahanbaku, stok, satuan, timestamp }; //id will probably not needed, pake auto increment
+    const newItem = { nama_bahanbaku, stok, satuan }; //id will probably not needed, pake auto increment
 
     BahanBaku.create(newItem)
       .then((result) => {

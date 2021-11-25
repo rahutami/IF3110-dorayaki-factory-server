@@ -7,6 +7,7 @@ const sequelize = new Sequelize(db.database, db.username, db.password, {
   define: {
     freezeTableName: true,
   },
+  timezone: "+07:00", // for writng
 });
 
 const authenticate = async () => {
