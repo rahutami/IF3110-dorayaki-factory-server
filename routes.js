@@ -12,7 +12,7 @@ const { authenticateToken } = require("./controller/auth");
 // router.use("/bahanbaku", authenticateToken, bahanbaku);
 // router.use("/dorayaki", authenticateToken, dorayaki);
 // router.use("/requests", authenticateToken, request);
-// router.use("/auth", authenticateToken, auth);
+// router.use("/auth", auth);
 
 router.use("/bahanbaku", bahanbaku);
 router.use("/dorayaki", dorayaki);
