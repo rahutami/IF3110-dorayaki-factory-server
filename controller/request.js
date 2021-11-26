@@ -5,10 +5,7 @@ const moment = require("moment");
 const Request = require("../models/Request");
 const BahanBaku = require("../models/BahanBaku");
 const Resep = require("../models/Resep");
-const Dorayaki = require("../models/Dorayaki");
-const LogRequest = require("../models/LogRequest");
 const { Sequelize } = require("sequelize");
-const { sendMail } = require("./mail");
 
 const Op = Sequelize.Op;
 // get all item
@@ -106,25 +103,6 @@ router.route("/:action/:id").put(async (req, res) => {
     res
       .status(404)
       .json({ success: false, allRequests, msg: "Request not available" });
-  }
-});
-
-router.route("/").post(async (req, res) => {
-  try {
-    const { idDorayaki, amount } = req.body;
-    const dorayaki = await Dorayaki.findOne({ id_dorayaki: idDorayaki });
-
-    Request.create({
-      id_dorayaki: idDorayaki,
-      jumlah: amount,
-    });
-
-    sendMail(dorayaki["nama"], amount);
-
-    res.status(200).json("success");
-  } catch (err) {
-    res.status(500).json("error");
-    throw err;
   }
 });
 
