@@ -11,8 +11,12 @@ app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", ["*"]);
-  res.append("Access-Control-Allow-Methods", "GET,PUT,POST");
-  res.append("Access-Control-Allow-Headers", "Content-Type,Authorization");
+  res.append("Access-Control-Allow-Methods", ["GET", "PUT", "POST"]);
+  res.append("Access-Control-Allow-Headers", [
+    "Content-Type",
+    "Authorization",
+    "Accept",
+  ]);
   next();
 });
 
