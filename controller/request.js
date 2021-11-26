@@ -47,16 +47,14 @@ router.route("/:action/:id").put(async (req, res) => {
         // dari id request, cari id dorayaki
         const id_dorayaki = selectedRequest.id_dorayaki;
 
-        // dari dorayaki, cari bahan baku yg dibutuhkan (lewat resep)
+        // dari dorayaki, cari bahan baku yang dibutuhkan (lewat resep)
         const listIdBahanBaku = [];
         const requiredBahanBakus = await Resep.findAll({
           where: { id_dorayaki },
         });
-        // console.log("list id bahanbaku: ",requiredBahanBakus);
         requiredBahanBakus.forEach((element) => {
           listIdBahanBaku.push(element.dataValues["id_bahanbaku"]);
         });
-        // console.log("LISTTT id bahanbaku: ", listIdBahanBaku);
 
         // cari dari list bahan baku (stoknya)
         const stokBahanBakus = await BahanBaku.findAll({

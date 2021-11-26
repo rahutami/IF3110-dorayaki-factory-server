@@ -6,7 +6,7 @@
 
 const { DataTypes } = require("sequelize");
 const sequelize = require("./index");
-const Resep = require("../models/Resep");
+// const Resep = require("../models/Resep");
 
 const Dorayaki = sequelize.define(
   "Dorayaki",
@@ -18,6 +18,10 @@ const Dorayaki = sequelize.define(
       autoIncrement: true,
     },
     nama: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    deskripsi: {
       type: DataTypes.STRING,
       allowNull: false,
     },
