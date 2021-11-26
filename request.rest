@@ -1,3 +1,0 @@
-GET http://localhost:8000/requests
-
-PUT http://localhost:8000/requests/accept/1
